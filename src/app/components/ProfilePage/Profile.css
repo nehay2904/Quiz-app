@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Nunito+Sans:ital,wght@0,200;1,200;1,300&family=Roboto&family=Space+Mono:ital@1&display=swap');
+
+*{
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color:#34314c;
+
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: blueviolet;
+
+}
+h5{
+    /* background-color: aquamarine; */
+    margin-left: 8px;
+    text-align: center;
+}
+h6{
+    padding-left: 10px;
+    /* margin: 10px; */
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    /* background-color:black; */
+   padding-right: 15px;
+   padding-left: 15px;
+   
+}
+
+.schoolName{
+    /* background-color:pink; */
+margin-top: 30px;
+margin-bottom: 30px;
+}
