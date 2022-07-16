@@ -1,20 +1,35 @@
-import '../fake-db';
-import { Provider } from 'react-redux';
-import { useRoutes } from 'react-router-dom';
-import { MatxTheme } from './components';
-import { AuthProvider } from './contexts/JWTAuthContext';
-import { SettingsProvider } from './contexts/SettingsContext';
-import { Store } from './redux/Store';
-import routes from './routes';
+// import '../fake-db';
+// import { Provider } from 'react-redux';
+// import { useRoutes } from 'react-router-dom';
+// import { MatxTheme } from './components';
+// import { AuthProvider } from './contexts/JWTAuthContext';
+// import { SettingsProvider } from './contexts/SettingsContext';
+// import { Store } from './redux/Store';
 import ProfilePage from './components/ProfilePage/ProfilePage';
+import Home from './components/Home/Home';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import Header from './components/Header/Header';
 
 
-const App = () => {
-  const content = useRoutes(routes);
 
+function App() {
   return (
-   <ProfilePage />
+    <Router>
+      <Header/>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/profilepage" element={ <ProfilePage />}/>
+        
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;
+
+

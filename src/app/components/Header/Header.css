@@ -1,0 +1,16 @@
+.header{
+    background-color: purple;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    top: 0;
+    left: 0;
+}
+
+
+.LogoImage{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
