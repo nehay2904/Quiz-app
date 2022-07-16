@@ -1,4 +1,3 @@
-
 import  React , {useState} from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
@@ -19,6 +18,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
 import { MenuProps, useStyles, options } from "./Utils";
+import SimpleCheckbox from 'app/views/material-kit/checkbox/SimpleCheckbox';
 
 const currencies = [
   {
@@ -34,33 +34,27 @@ const currencies = [
     label: 'Both',
   }
 ];
-
-const steps = [
-  {
-    label: 'Select campaign settings',
-    description: `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`,
-  },
-  {
-    label: 'Create an ad group',
-    description:
-      'An ad group contains one or more ads which target a shared set of keywords.',
-  },
-  {
-    label: 'Create an ad',
-    description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`,
-  },
-];
-
-
+ 
 
 export default function VerticalLinearStepper() {
 
+  // end point for personal info
 
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState("")
+  const [email, setEmail] = useState("")
+  const [dateofbirth, setDateofbirth] = useState("")
+  
+// end point for educational details
+
+ const [schoolName, setSchoolName] = useState("")
+ const [schoolAddress, setSchoolAddress] = useState("")
+
+
+ 
+
+ // end point for target exams
   const classes = useStyles();
   const [selected, setSelected] = useState([]);
   const isAllSelected =
@@ -71,16 +65,14 @@ export default function VerticalLinearStepper() {
 
     if (value[value.length - 1] === "all") {
       setSelected(selected.length === options.length ? [] : options);
-      return;
+      return("");
     }
     setSelected(value);
   };
 
-  const [currency, setCurrency] = React.useState('EUR');
 
-  
-
-
+  // end point for role
+  const [role, setRole] = React.useState('');
   // buttons 
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -96,6 +88,26 @@ export default function VerticalLinearStepper() {
     setActiveStep(0);
   };
 
+  const handleFinish = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    
+    const user = {
+        firstName: firstName,
+        lastName: lastName,
+        phoneNumber: phoneNumber,
+        email: email,
+        dateofbirth: dateofbirth,
+        schoolName:schoolAddress,
+        schoolAddress: schoolAddress,
+        role: role,
+        selected: selected
+        
+    }
+    const data = JSON.stringify(user)
+
+    console.log(data)
+  };
+  // 
   return (
     <div className="container">
       <Box sx={{ maxWidth: 400 }}>
@@ -118,11 +130,17 @@ export default function VerticalLinearStepper() {
                   noValidate
                   autoComplete="off"
                 >
-                  <TextField id="outlined-basic" label="First Name" variant="outlined" />
-                  <TextField id="outlined-basic" label="Last Name" variant="outlined" />
-                  <TextField id="outlined-basic" label="Phone Number" type="tel" variant="outlined" />
-                  <TextField id="outlined-basic" label="Email Address" type="email" variant="outlined" />
-                  <TextField id="outlined-basic" type="date" variant="outlined" />
+                  <TextField id="outlined-basic" label="First Name" variant="outlined" value={firstName} onChange={(e) =>{
+                    setFirstName(e.target.value )
+                  }}/>
+                  <TextField id="outlined-basic" label="Last Name" variant="outlined" value={lastName} onChange={(e) =>{
+                    setLastName(e.target.value ) }}/>
+                  <TextField id="outlined-basic" label="Phone Number" type="tel" variant="outlined" value={phoneNumber} onChange={(e) =>{
+                    setPhoneNumber(e.target.value  ) }}/>
+                  <TextField id="outlined-basic" label="Email Address" type="email" variant="outlined" value={email} onChange={(e) =>{
+                    setEmail(e.target.value)  }}/>
+                  <TextField id="outlined-basic" type="date" variant="outlined" value={dateofbirth} onChange={(e) =>{
+                    setDateofbirth(e.target.value ,"") }}/>
 
 
                 </Box>
@@ -163,8 +181,10 @@ export default function VerticalLinearStepper() {
                   noValidate
                   autoComplete="off"
                 >
-                  <TextField id="outlined-basic" label="School/College Name" variant="outlined" />
-                  <TextField id="outlined-basic" label="School/College Address" variant="outlined" />
+                  <TextField id="outlined-basic" label="School/College Name" variant="outlined" value={schoolName} onChange={(e) =>{
+                    setSchoolName(e.target.value  )}}/>
+                  <TextField id="outlined-basic" label="School/College Address" variant="outlined" value={schoolAddress} onChange={(e) =>{
+                    setSchoolAddress(e.target.value )}}/>
 
                 </Box>
               </Typography>
@@ -278,9 +298,9 @@ export default function VerticalLinearStepper() {
                       id="outlined-select-currency"
                       select
                       label="Select"
-                      value={currency}
+                      value={role}
                       onChange={(e)=>{
-                        setCurrency(e.target.value)
+                        setRole(e.target.value  )
                       }}
                       helperText="Student/Examiner"
                     >
@@ -297,7 +317,7 @@ export default function VerticalLinearStepper() {
               <div>
                 <Button
                   variant="contained"
-                  onClick={handleNext}
+                  onClick={handleFinish}
                   sx={{ mt: 1, mr: 1 }}
                 >
                   Finish
