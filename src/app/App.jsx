@@ -19,14 +19,9 @@ import Header from './components/Header/Header';
 
 function App() {
   return (
-    <Router>
-      <Header/>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/profilepage" element={ <ProfilePage />}/>
-        
-      </Routes>
-    </Router>
+    <div>
+      <ProfilePage />
+    </div>
   );
 }
 

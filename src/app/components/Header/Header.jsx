@@ -2,6 +2,7 @@ import React from 'react'
 import './Header.css'
 import Image from '../../Images/Logo.jpg'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Link } from 'react-router-dom';
 
 
 function Header() {
@@ -12,7 +13,7 @@ function Header() {
       </div>
       <div className="profilePage">
         
-         <a href='./'>  <AccountCircleIcon style={{width:30, height:30}}/></a>
+         <Link to="./profilepage">Profilepage</Link>
       </div>
    </div>
   )

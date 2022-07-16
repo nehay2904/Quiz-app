@@ -109,7 +109,7 @@ export default function VerticalLinearStepper() {
   };
   // 
   return (
-    <div className="container">
+    <div className="profilepage container">
       <Box sx={{ maxWidth: 400 }}>
         <Stepper activeStep={activeStep} orientation="vertical">
 
