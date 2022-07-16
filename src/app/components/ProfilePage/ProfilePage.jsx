@@ -86,9 +86,20 @@ export default function VerticalLinearStepper() {
 
   const handleReset = () => {
     setActiveStep(0);
+    setFirstName("");
+    setLastName("");
+    setPhoneNumber("")
+    setDateofbirth("")
+    setEmail("")
+    setSchoolAddress("")
+    setSchoolName("")
+    setRole("")
+    setSelected("")
   };
 
   const handleFinish = () => {
+
+    
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     
     const user = {
@@ -103,7 +114,8 @@ export default function VerticalLinearStepper() {
         selected: selected
         
     }
-    const data = JSON.stringify(user)
+    const data = JSON.stringify(user);
+    
 
     console.log(data)
   };
