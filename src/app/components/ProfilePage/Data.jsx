@@ -1,4 +1,4 @@
-  import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
   const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -40,15 +40,18 @@
     variant: "menu"
   };
 
-  const options = [
-    "JEE",
-    "NEET",
-    "KVPY",
-    "RTSE",
-    "NTSE",
-    "GATE",
-    "CAT"
+  const eduoptions= [
+    "10th",
+    "12th",
+    "BTech",
+    "BSc",
+    "BCom",
+    "BCa",
+    "MTech",
+    "MCA",
+    
+
   ];
   
 
-  export { useStyles, MenuProps, options };
+  export { useStyles, MenuProps, eduoptions };
